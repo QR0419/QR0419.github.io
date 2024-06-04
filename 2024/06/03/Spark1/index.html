@@ -6,17 +6,72 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Spark基础环境配置 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="一、基础环境：1、主机名：   序号 主机名 IP Address    01 master 192.168.30.10   02 slave1 192.168.30.11   03 slave2 192.168.30.12   2、配置hosts：（注：三台服务器同时配置） 测试：（每台服务器都测试）    3、安装NTP：（master做NTP服务器，slave1、slave2同步master">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark基础环境配置">
+<meta property="og:url" content="http://example.com/2024/06/03/Spark1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、基础环境：1、主机名：   序号 主机名 IP Address    01 master 192.168.30.10   02 slave1 192.168.30.11   03 slave2 192.168.30.12   2、配置hosts：（注：三台服务器同时配置） 测试：（每台服务器都测试）    3、安装NTP：（master做NTP服务器，slave1、slave2同步master">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image002.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image004.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image006.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image008.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image010.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image012.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image014.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image016.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image018.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image020.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image022.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image024.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image026.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image028.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image030.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image032.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image034.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image036.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image038.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image040.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image042.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image044.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image046.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image048.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image050.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image052.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image054.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image056.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image058.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image060.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image062.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image064.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image066.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image068.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image070.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image072.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image074.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image076.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image078.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image080.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image082.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image084.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image086.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image088.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image090.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image092.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image094.gif">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image096.jpg">
+<meta property="og:image" content="http://example.com/2024/06/03/Spark1/clip_image098.gif">
+<meta property="article:published_time" content="2024-06-03T04:56:35.000Z">
+<meta property="article:modified_time" content="2024-06-04T03:09:24.000Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="基础环境，JDK，Hadoop，Zookeeper">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/06/03/Spark1/clip_image002.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -207,159 +262,377 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spark1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/06/04/hello-world/" class="archive-article-date">
-        <time datetime="2024-06-04T02:18:07.576Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-04</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/06/04/hello-world/" target="_blank">Hello World</a>
   
+    <h1 class="article-title" itemprop="name">
+      Spark基础环境配置
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/06/03/Spark3/" class="archive-article-date">
-        <time datetime="2024-06-03T05:37:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-03</time>
-</a>
-
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/06/03/Spark3/" target="_blank">《Spark HA &amp; Yarn 配置》</a>
-  
-    </h1>
-  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
 
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spark(HA)，Spark(Yarn)</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/06/03/Spark2/" class="archive-article-date">
-        <time datetime="2024-06-03T05:31:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/06/03/Spark2/" target="_blank">Spark local&amp; stand-alone 配置</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spark(local)，Spark(stand-alone)</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
 <a href="/2024/06/03/Spark1/" class="archive-article-date">
         <time datetime="2024-06-03T04:56:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-03</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="一、基础环境："><a href="#一、基础环境：" class="headerlink" title="一、基础环境："></a>一、基础环境：</h1><h2 id="1、主机名："><a href="#1、主机名：" class="headerlink" title="1、主机名："></a>1、主机名：</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>主机名</th>
+<th>IP Address</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>master</td>
+<td>192.168.30.10</td>
+</tr>
+<tr>
+<td>02</td>
+<td>slave1</td>
+<td>192.168.30.11</td>
+</tr>
+<tr>
+<td>03</td>
+<td>slave2</td>
+<td>192.168.30.12</td>
+</tr>
+</tbody></table>
+<h2 id="2、配置hosts：（注：三台服务器同时配置）"><a href="#2、配置hosts：（注：三台服务器同时配置）" class="headerlink" title="2、配置hosts：（注：三台服务器同时配置）"></a>2、配置hosts：（注：三台服务器同时配置）</h2><p><img src="/2024/06/03/Spark1/clip_image002.jpg" alt="img"></p>
+<p>测试：（每台服务器都测试）</p>
+<p><img src="/2024/06/03/Spark1/clip_image004.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image006.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image008.jpg" alt="img"></p>
+<h2 id="3、安装NTP：（master做NTP服务器，slave1、slave2同步master）"><a href="#3、安装NTP：（master做NTP服务器，slave1、slave2同步master）" class="headerlink" title="3、安装NTP：（master做NTP服务器，slave1、slave2同步master）"></a>3、安装NTP：（master做NTP服务器，slave1、slave2同步master）</h2><p>（1）matser： yum -y install ntp </p>
+<p><img src="/2024/06/03/Spark1/clip_image010.jpg" alt="img"></p>
+<p>systemctl enable ntpd &amp;&amp; systemctl start ntpd </p>
+<p><img src="/2024/06/03/Spark1/clip_image012.jpg" alt="img"></p>
+<p>三台服务器需执行以上命令。</p>
+<p>Server:</p>
+<p><img src="/2024/06/03/Spark1/clip_image014.jpg" alt="img"></p>
+<p>Client:</p>
+<p><img src="/2024/06/03/Spark1/clip_image016.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image018.jpg" alt="img"></p>
+<p>检查：（master、slave1、slave2）</p>
+<p><img src="/2024/06/03/Spark1/clip_image020.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image022.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image024.jpg" alt="img"></p>
+<h2 id="4、配置SSH免密码"><a href="#4、配置SSH免密码" class="headerlink" title="4、配置SSH免密码"></a>4、配置SSH免密码</h2><h3 id="（1）所有节点分别生成私有密钥"><a href="#（1）所有节点分别生成私有密钥" class="headerlink" title="（1）所有节点分别生成私有密钥"></a>（1）所有节点分别生成私有密钥</h3><p>ssh-keygen -t dsa -P ‘’ -f &#x2F;root&#x2F;.ssh&#x2F;id_dsa</p>
+<p><img src="/2024/06/03/Spark1/clip_image026.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image028.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image030.jpg" alt="img"></p>
+<h3 id="（2）将公钥文件复制为authorized-keys文件"><a href="#（2）将公钥文件复制为authorized-keys文件" class="headerlink" title="（2）将公钥文件复制为authorized_keys文件"></a>（2）将公钥文件复制为authorized_keys文件</h3><p><img src="/2024/06/03/Spark1/clip_image032.jpg" alt="img"></p>
+<h3 id="（3）mater主机连接自己，做SSH内环测试"><a href="#（3）mater主机连接自己，做SSH内环测试" class="headerlink" title="（3）mater主机连接自己，做SSH内环测试"></a>（3）mater主机连接自己，做SSH内环测试</h3><p><img src="/2024/06/03/Spark1/clip_image034.gif" alt="img"></p>
+<h3 id="（4）slave1、slave2节点将master公钥文件复制本机（注：密码验证）"><a href="#（4）slave1、slave2节点将master公钥文件复制本机（注：密码验证）" class="headerlink" title="（4）slave1、slave2节点将master公钥文件复制本机（注：密码验证）"></a>（4）slave1、slave2节点将master公钥文件复制本机（注：密码验证）</h3><p><img src="/2024/06/03/Spark1/clip_image036.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image038.jpg" alt="img"></p>
+<h3 id="（5）将master节点公钥文件追加各个节点（slave1、2）authorized-keys文件"><a href="#（5）将master节点公钥文件追加各个节点（slave1、2）authorized-keys文件" class="headerlink" title="（5）将master节点公钥文件追加各个节点（slave1、2）authorized_keys文件"></a>（5）将master节点公钥文件追加各个节点（slave1、2）authorized_keys文件</h3><p><img src="/2024/06/03/Spark1/clip_image040.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image042.jpg" alt="img"></p>
+<h3 id="（6）master测试登录slave1、slave2（首次，需要“yes”确认连接）"><a href="#（6）master测试登录slave1、slave2（首次，需要“yes”确认连接）" class="headerlink" title="（6）master测试登录slave1、slave2（首次，需要“yes”确认连接）"></a>（6）master测试登录slave1、slave2（首次，需要“yes”确认连接）</h3><h3 id="（7）同样操作，将slave1、2的id-dsa-pub传到master，追加authorized-keys"><a href="#（7）同样操作，将slave1、2的id-dsa-pub传到master，追加authorized-keys" class="headerlink" title="（7）同样操作，将slave1、2的id_dsa.pub传到master，追加authorized.keys"></a>（7）同样操作，将slave1、2的id_dsa.pub传到master，追加authorized.keys</h3><p><img src="/2024/06/03/Spark1/clip_image044.jpg" alt="img"></p>
+<h2 id="5、安装、配置JDK"><a href="#5、安装、配置JDK" class="headerlink" title="5、安装、配置JDK"></a>5、安装、配置JDK</h2><p>（1）mkdir -pv &#x2F;usr&#x2F;java </p>
+<p>（2）tar -zxvf jdk-8u171-linux-x64.tar.gz -C &#x2F;usr&#x2F;java&#x2F;</p>
+<p><img src="/2024/06/03/Spark1/clip_image046.jpg" alt="img"></p>
+<p>（3）vi &#x2F;etc&#x2F;profile</p>
+<p>填写以下内容：</p>
+<p>export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_171</p>
+<p>export CLASSPATH&#x3D;#JAVA_HOME&#x2F;lib&#x2F;</p>
+<p>export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</p>
+<p>export PATH JAVA_HOME CLASSPATH </p>
+<p><img src="/2024/06/03/Spark1/clip_image048.jpg" alt="img"></p>
+<p>生效环境变量，并查看jdk版本：</p>
+<p>source &#x2F;etc&#x2F;profile </p>
+<p>java -version </p>
+<p>将master主机的jdk目录，分别拷贝slave1、slave2主机：</p>
+<p>scp -r root@master:&#x2F;usr&#x2F;java  &#x2F;usr&#x2F;</p>
+<p>将slave1、slave2配置jdk；并生效环境变量，查看jdk版本验证：</p>
+<p>export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_171</p>
+<p>export CLASSPATH&#x3D;#JAVA_HOME&#x2F;lib&#x2F;</p>
+<p>export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</p>
+<p>export PATH JAVA_HOME CLASSPATH </p>
+<p><img src="/2024/06/03/Spark1/clip_image050.jpg" alt="img"></p>
+<h1 id="二、zookeeper"><a href="#二、zookeeper" class="headerlink" title="二、zookeeper"></a>二、zookeeper</h1><h2 id="1、修改主机名-与-IP地址映射设置（master、slave1、2都修改）"><a href="#1、修改主机名-与-IP地址映射设置（master、slave1、2都修改）" class="headerlink" title="1、修改主机名 与 IP地址映射设置（master、slave1、2都修改）"></a>1、修改主机名 与 IP地址映射设置（master、slave1、2都修改）</h2><table>
+<thead>
+<tr>
+<th>vi &#x2F;etc&#x2F;hosts</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.30.10</td>
+<td>master</td>
+<td>master.root.</td>
+</tr>
+<tr>
+<td>192.168.30.11</td>
+<td>slave1</td>
+<td>slave1.root</td>
+</tr>
+<tr>
+<td>192.168.30.12</td>
+<td>slave2</td>
+<td>slave2.root</td>
+</tr>
+</tbody></table>
+<p><img src="/2024/06/03/Spark1/clip_image052.jpg" alt="img"></p>
+<h2 id="2、master节点执行操作："><a href="#2、master节点执行操作：" class="headerlink" title="2、master节点执行操作："></a>2、master节点执行操作：</h2><h3 id="（1）创建zookeeper目录、解压解包；复制zoo-cfg："><a href="#（1）创建zookeeper目录、解压解包；复制zoo-cfg：" class="headerlink" title="（1）创建zookeeper目录、解压解包；复制zoo.cfg："></a>（1）创建zookeeper目录、解压解包；复制zoo.cfg：</h3><p><img src="/2024/06/03/Spark1/clip_image054.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image056.jpg" alt="img"></p>
+<p>或 egrep -v ‘(^#)’ zoo_sample.cfg | tee -a zoo.cfg</p>
+<h3 id="（2）配置zoo-cfg"><a href="#（2）配置zoo-cfg" class="headerlink" title="（2）配置zoo.cfg"></a>（2）配置zoo.cfg</h3><p><img src="/2024/06/03/Spark1/clip_image058.jpg" alt="img"></p>
+<p>vi zoo.cfg </p>
+<p>tickTime&#x3D;2000</p>
+<p>initLimit&#x3D;10</p>
+<p>syncLimit&#x3D;5</p>
+<p>dataDir&#x3D;&#x2F;tmp&#x2F;zookeeper</p>
+<p>clientPort&#x3D;2181</p>
+<p>dataDir&#x3D;&#x2F;usr&#x2F;zookeeper&#x2F;zookeeper-3.4.10&#x2F;zkdata</p>
+<p>dataLogDir&#x3D;&#x2F;usr&#x2F;zookeeper&#x2F;zookeeper-3.4.10&#x2F;zkdatalog</p>
+<p>server.1&#x3D;master:2888:3888</p>
+<p>server.2&#x3D;slave1:2888:3888</p>
+<p>server.3&#x3D;slave2:2888:3888</p>
+<p><img src="/2024/06/03/Spark1/clip_image060.gif" alt="555"></p>
+<h3 id="（3）在zookeeper目录中，创建zkdata、zkdatalog两个目录"><a href="#（3）在zookeeper目录中，创建zkdata、zkdatalog两个目录" class="headerlink" title="（3）在zookeeper目录中，创建zkdata、zkdatalog两个目录"></a>（3）在zookeeper目录中，创建zkdata、zkdatalog两个目录</h3><p><img src="/2024/06/03/Spark1/clip_image062.jpg" alt="img"></p>
+<h3 id="（4）进入zkdata目录，创建文件myid："><a href="#（4）进入zkdata目录，创建文件myid：" class="headerlink" title="（4）进入zkdata目录，创建文件myid："></a>（4）进入zkdata目录，创建文件myid：</h3><p><img src="/2024/06/03/Spark1/clip_image064.jpg" alt="img"></p>
+<h3 id="（5）将zookeeper目录分别slave1、slave2："><a href="#（5）将zookeeper目录分别slave1、slave2：" class="headerlink" title="（5）将zookeeper目录分别slave1、slave2："></a>（5）将zookeeper目录分别slave1、slave2：</h3><p>scp -r &#x2F;usr&#x2F;zookeeper&#x2F; root@slave1:&#x2F;usr</p>
+<p><img src="/2024/06/03/Spark1/clip_image066.jpg" alt="img"></p>
+<p>scp -r &#x2F;usr&#x2F;zookeeper&#x2F; root@slave2:&#x2F;usr</p>
+<p><img src="/2024/06/03/Spark1/clip_image068.jpg" alt="img"></p>
+<h3 id="（6）设置-myid"><a href="#（6）设置-myid" class="headerlink" title="（6）设置 myid"></a>（6）设置 myid</h3><p>配置的 dataDir 指定的目录下面，创建一个 myid 文件，里面内容为一个数字，用来标识当前主机，conf&#x2F;zoo.cfg 文件中配置的server.X 中 X 为什么数字，则 myid 文件中就输入这个数字。</p>
+<p>slave1 中为 2</p>
+<p>slave2 中为 3</p>
+<p><img src="/2024/06/03/Spark1/clip_image070.jpg" alt="img"></p>
+<p><img src="/2024/06/03/Spark1/clip_image072.jpg" alt="img"></p>
+<h3 id="（7）配置环境变量，并启动zookeeper（注：master、slave1、slave2）："><a href="#（7）配置环境变量，并启动zookeeper（注：master、slave1、slave2）：" class="headerlink" title="（7）配置环境变量，并启动zookeeper（注：master、slave1、slave2）："></a>（7）配置环境变量，并启动zookeeper（注：master、slave1、slave2）：</h3><p>export ZOOKEEPER_HOME&#x3D;&#x2F;usr&#x2F;zookeeper&#x2F;zookeeper-3.4.10</p>
+<p>PATH&#x3D;$PATH:$ZOOKEEPER_HOME&#x2F;bin</p>
+<p><img src="/2024/06/03/Spark1/clip_image074.jpg" alt="img"></p>
+<p>source &#x2F;etc&#x2F;profile</p>
+<h3 id="（8）启动zookeeper集群"><a href="#（8）启动zookeeper集群" class="headerlink" title="（8）启动zookeeper集群"></a>（8）启动zookeeper集群</h3><p><img src="/2024/06/03/Spark1/clip_image076.jpg" alt="img"></p>
+<h1 id="三、安装Hadoop"><a href="#三、安装Hadoop" class="headerlink" title="三、安装Hadoop"></a>三、安装Hadoop</h1><h2 id="1、创建-usr-hadoop目录、解压解包hadoop：（master节点操作）"><a href="#1、创建-usr-hadoop目录、解压解包hadoop：（master节点操作）" class="headerlink" title="1、创建&#x2F;usr&#x2F;hadoop目录、解压解包hadoop：（master节点操作）"></a>1、创建&#x2F;usr&#x2F;hadoop目录、解压解包hadoop：（master节点操作）</h2><p><img src="/2024/06/03/Spark1/clip_image078.gif" alt="739a645a92f050b2f7621a0d2347516"></p>
+<p>将hadoop-2.7.3.tar.gz 解压解包放置&#x2F;usr&#x2F;hadoop目录</p>
+<p>tar -zxvf hadoop-2.7.3.tar.gz -C &#x2F;usr&#x2F;hadoop&#x2F;</p>
+<h2 id="2、配置hadoop环境变量：（注：master、slave1、slave2均操作）"><a href="#2、配置hadoop环境变量：（注：master、slave1、slave2均操作）" class="headerlink" title="2、配置hadoop环境变量：（注：master、slave1、slave2均操作）"></a>2、配置hadoop环境变量：（注：master、slave1、slave2均操作）</h2><p>vi &#x2F;etc&#x2F;profile </p>
+<p>export HADOOP_HOME&#x3D;&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.7.3&#x2F;</p>
+<p>export CLASSPATH&#x3D;$CLASSPATH:$HADOOP_HOME&#x2F;lib</p>
+<p>export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin</p>
+<p>source &#x2F;etc&#x2F;profile </p>
+<p><img src="/2024/06/03/Spark1/clip_image080.gif" alt="edea1819d194e4225e67db1d3242aca"></p>
+<h2 id="3、编辑hadoop环境配置文件hadoop-env-sh"><a href="#3、编辑hadoop环境配置文件hadoop-env-sh" class="headerlink" title="3、编辑hadoop环境配置文件hadoop-env.sh"></a>3、编辑hadoop环境配置文件hadoop-env.sh</h2><p>路径：&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</p>
+<p><img src="/2024/06/03/Spark1/clip_image082.gif" alt="d08312cfc2cba2d400f8a6d7ffffd7d"></p>
+<p>输入内容：export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_171</p>
+<h2 id="3、编辑core-site-xml（注：配置文件在当前路径下）"><a href="#3、编辑core-site-xml（注：配置文件在当前路径下）" class="headerlink" title="3、编辑core-site.xml（注：配置文件在当前路径下）"></a>3、编辑core-site.xml（注：配置文件在当前路径下）</h2><p>填写以下配置文件：</p>
+<configuration>
+
+<p>​    <property></p>
+<p>​        <name>fs.default.name</name></p>
+<p>​        <value>hdfs:&#x2F;&#x2F;master:9000</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>hadoop.tmp.dir</name></p>
+<p>​        <value>&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.7.3&#x2F;hdfs&#x2F;tmp</value></p>
+<p>​        <description>A base for other temporary directories.</description></p>
+<p>​    </property></p>
+<p>​     <property></p>
+<p>​        <name>io.file.buffer.size</name></p>
+<p>​        <value>131072</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>fs.checkpoint.period</name></p>
+<p>​        <value>60</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>fs.checkpoint.size</name></p>
+<p>​        <value>67108864</value></p>
+<p>​    </property></p>
+</configuration>
+
+ 
+
+<p><img src="/2024/06/03/Spark1/clip_image084.gif" alt="img"></p>
+<h2 id="4、编辑yarn-site-xml：（注：配置文件路径在当前路径下）"><a href="#4、编辑yarn-site-xml：（注：配置文件路径在当前路径下）" class="headerlink" title="4、编辑yarn-site.xml：（注：配置文件路径在当前路径下）"></a>4、编辑yarn-site.xml：（注：配置文件路径在当前路径下）</h2><configuration>
+
+<p>​    <property></p>
+<p>​        <name>yarn.resourcemanager.address</name></p>
+<p>​        <value>master:18040</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>yarn.resourcemanager.scheduler.address</name></p>
+<p>​        <value>master:18030</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>yarn.resourcemanager.webapp.address</name></p>
+<p>​        <value>master:18088</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>yarn.resourcemanager.resource-tracker.address</name></p>
+<p>​        <value>master:18025</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>yarn.resourcemanager.admin.address</name></p>
+<p>​        <value>master:18141</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>yarn.nodemanager.aux-services</name></p>
+<p>​        <value>mapreduce_shuffle</value></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name></p>
+<p>​        <value>org.apache.hadoop.mapred.ShuffleHandler</value></p>
+<p>​    </property></p>
+<!-- Site specific YARN configuration properties -->
+
+</configuration>
+
+<p><img src="/2024/06/03/Spark1/clip_image086.gif" alt="img"></p>
+<h2 id="5、编写slave文件与-master文件："><a href="#5、编写slave文件与-master文件：" class="headerlink" title="5、编写slave文件与 master文件："></a>5、编写slave文件与 master文件：</h2><p><img src="/2024/06/03/Spark1/clip_image088.gif" alt="img"></p>
+<h2 id="6、配置hdfs-site-xml"><a href="#6、配置hdfs-site-xml" class="headerlink" title="6、配置hdfs-site.xml"></a>6、配置hdfs-site.xml</h2><configuration>
+
+<p>​    <property></p>
+<p>​        <name>dfs.replication</name></p>
+<p>​        <value>2</value></p>
+<p>​    </property></p>
+<p>​     <property></p>
+<p>​        <name>dfs.namenode.name.dir</name></p>
+<p>​        <value>file:&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.7.3&#x2F;hdfs&#x2F;name</value></p>
+<p>​        <final>true</final></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>dfs.datanode.data.dir</name></p>
+<p>​        <value>file:&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.7.3&#x2F;hdfs&#x2F;data</value></p>
+<p>​        <final>true</final></p>
+<p>​    </property></p>
+<p>​    <property></p>
+<p>​        <name>dfs.namenode.secondary.http-address</name></p>
+<p>​        <value>master:9001</value></p>
+<p>​    </property></p>
+<p>​     <property></p>
+<p>​        <name>dfs.webhdfs.enabled</name></p>
+<p>​        <value>true</value></p>
+<p>​    </property></p>
+<p>​     <property></p>
+<p>​        <name>dfs.permissions</name></p>
+<p>​        <value>false</value></p>
+<p>​    </property></p>
+</configuration>
+
+<p><img src="/2024/06/03/Spark1/clip_image090.gif" alt="img"></p>
+<h2 id="7、编辑mapred-site-xml"><a href="#7、编辑mapred-site-xml" class="headerlink" title="7、编辑mapred-site.xml"></a>7、编辑mapred-site.xml</h2><p>将模板mapred-site.xml.template 复制为 mapred-site.xml</p>
+<p> cp mapred-site.xml.template mapred-site.xml</p>
+<p>编写mapred-site.xml 填写以下内容：</p>
+<p>​    <property></p>
+<p>​        <name>mapreduce.framework.name</name></p>
+<p>​        <value>yarn</value></p>
+<p>​    </property></p>
+<p><img src="/2024/06/03/Spark1/clip_image092.gif" alt="img"></p>
+<h2 id="8、向slave1、slave2分发Hadoop目录："><a href="#8、向slave1、slave2分发Hadoop目录：" class="headerlink" title="8、向slave1、slave2分发Hadoop目录："></a>8、向slave1、slave2分发Hadoop目录：</h2><p>scp -r &#x2F;usr&#x2F;hadoop root@slave1:&#x2F;usr&#x2F;</p>
+<p>scp -r &#x2F;usr&#x2F;hadoop root@slave2:&#x2F;usr&#x2F;</p>
+<h2 id="9、master节点中格式化hadoop"><a href="#9、master节点中格式化hadoop" class="headerlink" title="9、master节点中格式化hadoop"></a>9、master节点中格式化hadoop</h2><p><strong>执行： hdfs namenode -format</strong></p>
+<p><img src="/2024/06/03/Spark1/clip_image094.gif" alt="img"></p>
+<p>访问master节点  master:50070 （注：50070 是hdfs的Web管理页面）</p>
+<p><img src="/2024/06/03/Spark1/clip_image096.jpg" alt="b3ff08f9843dc8f48f97ca6c52a3ed2"></p>
+<p><img src="/2024/06/03/Spark1/clip_image098.gif" alt="222"></p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/06/03/Spark1/" target="_blank">Spark基础环境配置</a>
-  
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          John Doe
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2024/06/03/Spark1/" title="Spark基础环境配置" target="_blank">http://example.com/2024/06/03/Spark1/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -371,19 +644,111 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/06/03/Spark1/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2024/06/03/Spark2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Spark local&amp; stand-alone 配置
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -424,8 +789,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
